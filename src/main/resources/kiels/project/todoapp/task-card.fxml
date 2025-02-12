@@ -7,6 +7,7 @@
 <?import javafx.scene.layout.*?>
 
 <?import io.github.palexdev.materialfx.controls.MFXComboBox?>
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
 <HBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="kiels.project.todoapp.controller.TaskCardController"
@@ -19,5 +20,5 @@
 
     <Region HBox.hgrow="ALWAYS" />
     <Label fx:id="taskStatus" text="ToDo" prefWidth="100"/>
-    <MFXComboBox text="View" onAction="#handleViewTask"/>
+    <MFXButton text="View" onAction="#handleViewTask"/>
 </HBox>

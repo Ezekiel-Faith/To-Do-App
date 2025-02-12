@@ -11,6 +11,8 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.util.Objects;
+
 public class Main extends Application {
 	@Override
 	public void start(Stage stage) throws Exception {
@@ -22,8 +24,13 @@ public class Main extends Application {
 				.build()
 				.setGlobal();
 
-		Parent root = FXMLLoader.load(getClass().getResource("/kiels/project/todoapp/todo.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource(
+				"/kiels/project/todoapp/todo.fxml"));
 		Scene scene = new Scene(root);
+
+		String css = Objects.requireNonNull(this.getClass().getResource(
+				"/kiels/project/todoapp/styles.css")).toExternalForm();
+		scene.getStylesheets().add(css);
 		scene.setFill(Color.TRANSPARENT);
 		stage.initStyle(StageStyle.DECORATED);
 		stage.setTitle("Todo App");
