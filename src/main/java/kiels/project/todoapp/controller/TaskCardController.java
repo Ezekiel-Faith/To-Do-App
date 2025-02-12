@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class TaskCardController {
@@ -16,7 +17,7 @@ public class TaskCardController {
 		// TODO: add viewing task logic
 	}
 
-	public void setTaskDetails(String name, LocalDate timeStamp, String status) {
+	public void setTaskDetails(String name, LocalDateTime timeStamp, String status) {
 		taskName.setText(name);
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm a, dd.MM.yyyy");
 		taskTimeStamp.setText(timeStamp.format(formatter));
