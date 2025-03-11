@@ -22,5 +22,23 @@ public class TaskCardController {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm a, dd.MM.yyyy");
 		taskTimeStamp.setText(timeStamp.format(formatter));
 		taskStatus.setText(status);
+		applyStatusColor(status);
+	}
+
+	private void applyStatusColor(String status) {
+		switch(status) {
+			case "ToDo":
+				taskStatus.setStyle("-fx-text-fill: grey;");
+				break;
+			case "InProgress":
+				taskStatus.setStyle("-fx-text-fill: orange;");
+				break;
+			case "Done":
+				taskStatus.setStyle("-fx-text-fill: green;");
+				break;
+			default:
+				taskStatus.setStyle("-fx-text-fill: black;");
+				break;
+		}
 	}
 }
