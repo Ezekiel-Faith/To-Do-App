@@ -5,8 +5,11 @@ import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import kiels.project.todoapp.dto.TaskDTO;
 import kiels.project.todoapp.managers.TaskList;
 
@@ -24,16 +27,41 @@ public class TodoController {
 		statusComboBox.getItems().addAll("All", "ToDo", "InProgress", "Done");
 		statusComboBox.setValue("All");
 
-		addTask("Create a JavaFX Project", "Build a really cool JavaFX App", LocalDateTime.now().minusMinutes(3), "ToDo");
-		addTask("Learn Springboot", "Springboot is crucial for your career!", LocalDateTime.now().minusMinutes(4), "InProgress");
-		addTask("Create a ToDo App", "Just follow the instructions and build it!", LocalDateTime.now().minusMinutes(5), "Done");
-
+		addTask("Create a JavaFX Project", "Build a really cool JavaFX App",
+				LocalDateTime.now().minusMinutes(3), "ToDo");
+		addTask("Learn Springboot", "Springboot is crucial for your career!",
+				LocalDateTime.now().minusMinutes(4), "InProgress");
+		addTask("Create a ToDo App", "Just follow the instructions and build it!",
+				LocalDateTime.now().minusMinutes(5), "Done");
 
 
 	}
 
 	public void handleAddTask(ActionEvent actionEvent) {
-		addTask("New Task", "A new task description",  LocalDateTime.now(), "ToDo");
+//		addTask("New Task", "A new task description", LocalDateTime.now(),
+//				"ToDo");
+		showAddTaskDialog();
+	}
+
+	private void showAddTaskDialog() {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource(
+					"/kiels/project/todoapp/task_add_dialog.fxml"));
+			VBox dialogPane = loader.load();
+
+			TaskAddDialogController dialogController = loader.getController();
+			dialogController.setMainController(this);
+
+			Stage dialogStage = new Stage();
+			dialogStage.setTitle("Add New Task");
+			dialogStage.initModality(Modality.APPLICATION_MODAL);
+			Scene scene = new Scene(dialogPane);
+
+			dialogStage.setScene(scene);
+			dialogStage.showAndWait();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	private void addTask(String title, String description,

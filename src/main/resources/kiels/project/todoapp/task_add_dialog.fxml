@@ -26,7 +26,7 @@
         <MFXButton text="Cancel" onAction="#handleCancel" prefWidth="80"
                    prefHeight="30"/>
         <MFXButton text="Submit" onAction="#handleSubmit" prefWidth="80"
-                   prefHeight="30"
+                   prefHeight="30"/>
     </HBox>
 
 </VBox>
