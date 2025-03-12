@@ -19,6 +19,15 @@ public class TaskAddDialogController {
 	}
 
 	public void handleSubmit(ActionEvent actionEvent) {
+		String title = taskTitleField.getText();
+		String description = taskDescription.getText();
+
+		if(!title.isEmpty()) {
+			mainController.addTaskFromDialog(title, description);
+			closeDialog();
+		} else {
+			System.out.println("Title is required");
+		}
 	}
 
 	private void closeDialog() {
