@@ -56,6 +56,9 @@ public class TodoController {
 			dialogStage.setTitle("Add New Task");
 			dialogStage.initModality(Modality.APPLICATION_MODAL);
 			Scene scene = new Scene(dialogPane);
+			String css = this.getClass().
+					getResource("/kiels/project/todoapp/addtaskstyles.css").toExternalForm();
+			scene.getStylesheets().add(css);
 
 			dialogStage.setScene(scene);
 			dialogStage.showAndWait();
